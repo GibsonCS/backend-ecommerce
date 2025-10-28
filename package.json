@@ -1,0 +1,21 @@
+{
+  "name": "backend-ecommerce",
+  "version": "1.0.0",
+  "description": "Sistema backend para uma plataforma de e-commerce desenvolvida com boas práticas e arquitetura moderna.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch ./src/main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "keywords": [],
+  "author": "@gibson-cruz",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "typescript": "^5.9.3"
+  }
+}
