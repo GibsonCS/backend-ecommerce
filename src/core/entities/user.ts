@@ -1,6 +1,6 @@
 import { randomUUID, type UUID } from "node:crypto";
 
-interface UserInputDTO {
+export interface UserInputDTO {
 	login: string;
 	password: string;
 	email: string;
