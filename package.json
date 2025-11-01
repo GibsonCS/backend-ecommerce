@@ -1,28 +1,28 @@
 {
-  "name": "backend-ecommerce",
-  "version": "1.0.0",
-  "description": "Sistema backend para uma plataforma de e-commerce desenvolvida com boas práticas e arquitetura moderna.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "node --watch ./src/main.ts",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand test/",
-    "test:dev": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand --watchAll test/",
-    "test:debug": "node --experimental-vm-modules --inspect node_modules/jest/bin/jest.js --runInBand --watchAll test"
-  },
-  "engines": {
-    "node": "22"
-  },
-  "keywords": [],
-  "author": "@gibson-cruz",
-  "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "2.3.1",
-    "@jest/globals": "^30.2.0",
-    "@types/node": "^24.9.1",
-    "cross-env": "^10.1.0",
-    "jest": "^30.2.0",
-    "ts-jest": "^29.4.5",
-    "typescript": "^5.9.3"
-  }
+	"name": "backend-ecommerce",
+	"version": "1.0.0",
+	"description": "Sistema backend para uma plataforma de e-commerce desenvolvida com boas práticas e arquitetura moderna.",
+	"main": "index.js",
+	"scripts": {
+		"dev": "node --watch ./src/main.ts",
+		"test": "npx vitest",
+		"test:cov": "vitest run --coverage",
+		"test:debug": "npx vitest"
+	},
+	"engines": {
+		"node": "22"
+	},
+	"keywords": [],
+	"author": "@gibson-cruz",
+	"license": "ISC",
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "2.3.1",
+		"@types/node": "^24.9.1",
+		"@vitest/coverage-v8": "^4.0.6",
+		"cross-env": "^10.1.0",
+		"ts-jest": "^29.4.5",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.6"
+	}
 }

@@ -10,7 +10,7 @@ export default class User {
 	private _userId: UUID;
 	private _login: string;
 	private _password: string;
-	private email: string;
+	private _email: string;
 	private createAt: Date;
 
 	constructor({ login, password, email }: UserInputDTO) {
@@ -28,7 +28,12 @@ export default class User {
 			throw new Error("Password must be six or more characters");
 		}
 
-		this.email = email;
+		if (email.includes("@")) {
+			this._email = email;
+		} else {
+			throw new Error("Email is invalid!");
+		}
+
 		this.createAt = new Date();
 	}
 
@@ -42,5 +47,9 @@ export default class User {
 
 	get password(): string {
 		return this._password;
+	}
+
+	get email(): string {
+		return this._email;
 	}
 }
