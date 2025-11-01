@@ -1,92 +1,95 @@
 # Backend E-commerce
 
-Sistema backend para uma plataforma de e-commerce desenvolvida com boas práticas e arquitetura moderna.
+A robust backend system for an e-commerce platform, built with modern architecture and best practices.
 
-## 📋 Índice
+## 📋 Table of Contents
 
-- [Visão Geral](#visão-geral)
-- [Tecnologias](#tecnologias)
-- [Estrutura do Banco de Dados](#estrutura-do-banco-de-dados)
-- [Funcionalidades](#funcionalidades)
-- [Configuração do Ambiente](#configuração-do-ambiente)
-- [Como Executar](#como-executar)
-- [Endpoints da API](#endpoints-da-api)
+- [Overview](#overview)
+- [Technologies](#technologies)
+- [Database Structure](#database-structure)
+- [Features](#features)
+- [Setup](#setup)
+- [Running the Project](#running-the-project)
+- [API Endpoints](#api-endpoints)
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-Este projeto é um backend robusto para e-commerce que gerencia usuários, produtos, clientes e compras. O sistema inclui autenticação, autorização baseada em papéis (RBAC) e operações completas de e-commerce.
+This project is a backend for managing users, products, clients, and orders in an e-commerce platform.  
+It includes authentication, role-based access control (RBAC), and complete e-commerce operations.
 
-## 🚀 Tecnologias
+> ⚠️ **Project Status:** In Development  
+> This repository is actively being developed. Features and documentation are subject to change.
 
-- Linguagem de Programação: [Especificar]
-- Framework: [Especificar]
-- Banco de Dados: [Especificar]
-- Autenticação: JWT
-- Documentação da API: [Especificar]
+## 🚀 Technologies
 
-## 🗄️ Estrutura do Banco de Dados
+- Programming Language: [Specify]
+- Framework: [Specify]
+- Database: [Specify]
+- Authentication: JWT
+- API Documentation: [Specify]
 
-O diagrama abaixo representa a estrutura do banco de dados do sistema:
+## 🗄️ Database Structure
+
+The diagram below illustrates the system's database structure:
 
 ```mermaid
 erDiagram
 USER {
-uuid userId PK
-string login
-string password
-string email
-date createAt
+    uuid userId PK
+    string login
+    string password
+    string email
+    date createAt
 }
 
-    ROLE {
-        uuid roleId PK
-        string name
-        date createAt
-    }
+ROLE {
+    uuid roleId PK
+    string name
+    date createAt
+}
 
-    USER_ROLE {
-        uuid userRoleId PK
-        uuid userId FK
-        uuid roleId FK
-        date createAt
-    }
+USER_ROLE {
+    uuid userRoleId PK
+    uuid userId FK
+    uuid roleId FK
+    date createAt
+}
 
-    CLIENT {
-        uuid clientId PK
-        uuid userId FK
-        string name
-        string cpf
-        string phone
-        string address
-    }
+CLIENT {
+    uuid clientId PK
+    uuid userId FK
+    string name
+    string cpf
+    string phone
+    string address
+}
 
-    COMPRA {
-        uuid compraId PK
-        uuid clientId FK
-        date dataCompra
-        decimal total
-    }
+ORDER {
+    uuid orderId PK
+    uuid clientId FK
+    date orderDate
+    decimal total
+}
 
-    PRODUTO {
-        uuid produtoId PK
-        string nome
-        decimal preco
-        integer estoque
-        date createAt
-    }
+PRODUCT {
+    uuid productId PK
+    string name
+    decimal price
+    integer stock
+    date createAt
+}
 
-    COMPRA_PRODUTO {
-        uuid compraProdutoId PK
-        uuid compraId FK
-        uuid produtoId FK
-        integer quantidade
-        decimal precoUnitario
-    }
+ORDER_PRODUCT {
+    uuid orderProductId PK
+    uuid orderId FK
+    uuid productId FK
+    integer quantity
+    decimal unitPrice
+}
 
-    USER ||--o{ USER_ROLE : "possui"
-    ROLE ||--o{ USER_ROLE : "atribuído a"
-    USER ||--|| CLIENT : "representa"
-    CLIENT ||--o{ COMPRA : "realiza"
-    COMPRA ||--o{ COMPRA_PRODUTO : "contém"
-    PRODUTO ||--o{ COMPRA_PRODUTO : "está em"
-```
+USER ||--o{ USER_ROLE : "has"
+ROLE ||--o{ USER_ROLE : "assigned to"
+USER ||--|| CLIENT : "represents"
+CLIENT ||--o{ ORDER : "makes"
+ORDER ||--o{ ORDER_PRODUCT : "contains"
+PRODUCT ||--o{ ORDER_PRODUCT : "included in"
